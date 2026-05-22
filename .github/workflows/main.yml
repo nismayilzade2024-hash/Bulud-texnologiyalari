@@ -1,0 +1,21 @@
+name: CI/CD Build Test
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Kodlari GitHub-dan Chek
+      uses: actions/checkout@v4
+
+    - name: Docker Muhitini Qur
+      uses: docker/setup-buildx-action@v3
+
+    - name: Dockerfile-i Test Et (Build)
+      run: |
+        docker build -t test-app .
+        echo "Tebrikler! Dockerfile ugurla test olundu, hech bir xeta yoxdur!"
